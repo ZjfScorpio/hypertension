@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/layout/head :: head"></head>
+<body>
+<header id="header" class="navbar">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav pull-right">
+            <li id="header-user" class="dropdown">
+                <a class="dropdown-toggle" href="">
+                    <span class="glyphicon glyphicon-user glyphicon-pos-2"></span>
+                    管理员
+                </a>
+            </li>
+            <li id="header-tasks" class="dropdown">
+                <a class="dropdown-toggle" th:href="@{/back/logout}">
+                    <span class="glyphicon glyphicon-remove-circle glyphicon-pos-2"></span>
+                    安全退出
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<section id="page">
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-menu">
+            <div class="divide-10"></div>
+
+            <ul id="left_ajax">
+                <li class="has-sub" >
+                    <a href="javascript:void(0);" class="offsite" th:id="'has_'+${vo.getId()}">
+                        <i class="glyphicon glyphicon-th-large"></i>
+                        <span class="menu-text">测试数据查看</span>
+                        <span class="glyphicon glyphicon-triangle-left arrow"></span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <div class="divide-20"></div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="content" class="col-lg-12">
+
+
+                    <div class="row_main-content">
+
+                        <div layout:fragment="content"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="bs-footer">
+    Copyright © 2017-[[${#dates.format(new java.util.Date().getTime(), 'yyyy')}]]   All Rights Reserved.
+</footer>
+</body>
+</html>

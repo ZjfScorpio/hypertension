@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>后台-高血压概率测试</title>
+    <link rel="stylesheet" type="text/css" href="/zui/css/zui.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/zui/js/zui.min.js"></script>
+    <!-- DataTables -->
+    <script src="/datatables/jquery.dataTables.min.js"></script>
+    <script src="/datatables/dataTables.bootstrap.min.js"></script>
+    <style>
+        .col-xs-4 {
+            padding: 0;
+        }
+    </style>
+    <script>
+
+        $(function () {
+            var security_tab = $('#security_tab').DataTable({
+                "dom": 'itflp',
+                "processing": false,
+                "searching": false,
+                // "paging": true, //是否开启本地分页
+                // "serverSide": true, //启用服务器端分页
+                "bInfo": false,
+                "language": {"url": "adminlte/plugins/datatables/language.json"},
+                "ajax": {
+                    "url": "/back/person_list",
+                    "type": "post",
+                    // "data": function(d) {
+                    //     //自定义查询参数
+                    //     d.roleId = $("#roleId").val();
+                    // }
+                },
+                "columns": [
+                    {"data": "id"},
+                    {"data": "sex"},
+                    {"data": "age"},
+                    {"data": "parents"},
+                    {"data": "grandparents"},
+                    {"data": "brothers"},
+                    {"data": "times"},
+                    {"data": "rate"},
+                    {"data": "date"}
+
+                ]
+            });
+
+        });
+
+        function download(){
+            var $form = $('<form method="GET"></form>');
+            $form.attr('action', '/back/select_result');
+            $form.appendTo($('body'));
+            $form.submit();
+        }
+
+    </script>
+</head>
+<body>
+<div class="container-fixed-sm">
+    <div class="alert alert-info" style="margin-top: 15px;margin-bottom: 5px">
+        <div class="content" style="text-align: center;font-size: 25px;">
+            高血压测试数据表
+        </div>
+    </div>
+    <table id="security_tab" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+        <tr>
+            <th>id</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>父母</th>
+            <th>祖父母</th>
+            <th>兄弟姐妹</th>
+            <th>倍数</th>
+            <th>概率</th>
+            <th>测试时间</th>
+        </tr>
+        </tr>
+        </thead>
+    </table>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                用户选择和结果数据集
+            </div>
+            <div class="panel-body">
+                <a download="用户选择和结果数据集" href="javascript:download()">点击下载</a>
+            </div>
+        </div>
+</div>
+
+
+</body>
+</html>
+
+</html>
