@@ -25,7 +25,9 @@
 # 如何开始
 
 > 1.创建hypertension数据库
+>
 > 2.导入resources下的hypertension.sql的表结构和数据
+>
 > 3.修改application.properties下的数据库信息为自己的数据库信息
 >
 > 4.前台访问:localhost:8081/tets
